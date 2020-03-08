@@ -25,7 +25,7 @@ export const Aquedux = {
     { style: true }
   ),
   img: createAxComponent(
-    defineElement<React.HTMLAttributes<HTMLImageElement>>('img'),
+    defineElement<React.ImgHTMLAttributes<HTMLImageElement>>('img'),
     { style: true }
   ),
   table: createAxComponent(
