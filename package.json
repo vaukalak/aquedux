@@ -1,5 +1,5 @@
 {
-  "name": "react-rx",
+  "name": "aquedux",
   "version": "1.0.0",
   "description": "react components directly manipulated by streams",
   "main": "dist/index.js",
