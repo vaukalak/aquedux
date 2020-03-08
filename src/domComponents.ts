@@ -24,6 +24,10 @@ export const Aquedux = {
     defineElement<React.HTMLAttributes<HTMLParagraphElement>>('p'),
     { style: true }
   ),
+  img: createAxComponent(
+    defineElement<React.HTMLAttributes<HTMLTableElement>>('img'),
+    { style: true }
+  ),
   table: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLTableElement>>('table'),
     { style: true }
