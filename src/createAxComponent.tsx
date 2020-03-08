@@ -50,7 +50,7 @@ const mergeDeep = (base: any, override: any, deepKeys: any[]) => {
 
 type DeepObservable = { [key: string]: Observable<any> | DeepObservable };
 
-const useAxUpdate = (observableProps: DeepObservable) => {
+const useAxUpdate = (observableProps: DeepObservable, keyMap: { [key: string]: string }) => {
   const componentRef = useRef<any>();
   const formerObservableProps = useRef<any>({});
   const observableValues = useRef<any>({});
@@ -76,7 +76,7 @@ const useAxUpdate = (observableProps: DeepObservable) => {
               componentRef.current![prefix][key] = value;
             } else {
               observableValues.current[key] = value;
-              componentRef.current![key] = value;
+              componentRef.current![keyMap[key]] = value;
             }
           });
         } else {
@@ -102,10 +102,11 @@ const useAxUpdate = (observableProps: DeepObservable) => {
 
 export const createAxComponent = <
   Props extends Object,
-  DeepKeys = { [key: string]: boolean } 
+  DeepKeys = { [key: string]: boolean }
 >(
   Comp: React.ComponentType<Props>,
-  deepKeys: DeepKeys
+  deepKeys: DeepKeys,
+  keyMap: { [key: string]: string } = {}
 ) => (props: RxProps<Props, DeepKeys>) => {
   const [observableProps, normalProps] = partitionObjectDeep(
     props,
@@ -113,9 +114,9 @@ export const createAxComponent = <
     Object.keys(deepKeys),
   );
 
-  const { componentRef, observableValues } = useAxUpdate(observableProps);
+  const { componentRef, observableValues } = useAxUpdate(observableProps, keyMap);
 
-  const mergedProps = mergeDeep(normalProps, observableValues, Object.keys(deepKeys));
+  const mergedProps = mergeDeep(normalProps, observableValues.current, Object.keys(deepKeys));
 
   return (
     <Comp ref={componentRef} {...mergedProps} />

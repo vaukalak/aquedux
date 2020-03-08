@@ -10,19 +10,23 @@ const defineElement = <Props extends {} = any>(tag: string) =>
 export const Aquedux = {
   div: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLDivElement>>('div'),
-    { style: true }
+    { style: true },
+    { children: "textContent" }
   ),
   span: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLSpanElement>>('span'),
-    { style: true }
+    { style: true },
+    { children: "textContent" }
   ),
   a: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLAnchorElement>>('a'),
-    { style: true }
+    { style: true },
+    { children: "textContent" }
   ),
   p: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLParagraphElement>>('p'),
-    { style: true }
+    { style: true },
+    { children: "textContent" }
   ),
   img: createAxComponent(
     defineElement<React.ImgHTMLAttributes<HTMLImageElement>>('img'),
@@ -38,10 +42,12 @@ export const Aquedux = {
   ),
   td: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLTableDataCellElement>>('td'),
-    { style: true }
+    { style: true },
+    { children: "textContent" }
   ),
   th: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLTableHeaderCellElement>>('th'),
-    { style: true }
+    { style: true },
+    { children: "textContent" }
   )
 };
