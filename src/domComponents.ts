@@ -1,5 +1,5 @@
 import React from "react";
-import { createRxComponent } from "./createRxComponent";
+import { createAxComponent } from "./createAxComponent";
 
 const defineElement = <Props extends {} = any>(tag: string) =>
   React.forwardRef(
@@ -7,36 +7,36 @@ const defineElement = <Props extends {} = any>(tag: string) =>
       React.createElement<Props>(tag, { ...props, ref })
   );
 
-export const RxComponents = {
-  div: createRxComponent(
+export const Aquedux = {
+  div: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLDivElement>>('div'),
     { style: true }
   ),
-  span: createRxComponent(
+  span: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLSpanElement>>('span'),
     { style: true }
   ),
-  a: createRxComponent(
+  a: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLAnchorElement>>('a'),
     { style: true }
   ),
-  p: createRxComponent(
+  p: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLParagraphElement>>('p'),
     { style: true }
   ),
-  table: createRxComponent(
+  table: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLTableElement>>('table'),
     { style: true }
   ),
-  tr: createRxComponent(
+  tr: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLTableRowElement>>('tr'),
     { style: true }
   ),
-  td: createRxComponent(
+  td: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLTableDataCellElement>>('td'),
     { style: true }
   ),
-  th: createRxComponent(
+  th: createAxComponent(
     defineElement<React.HTMLAttributes<HTMLTableHeaderCellElement>>('th'),
     { style: true }
   )

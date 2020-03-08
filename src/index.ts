@@ -1,2 +1,2 @@
-export { RxComponents } from "./rxComponents";
-export { createRxComponent } from "./createRxComponent";
+export { Aquedux } from "./domComponents";
+export { createAxComponent } from "./createAxComponent";

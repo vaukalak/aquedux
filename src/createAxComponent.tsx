@@ -44,7 +44,7 @@ const mergeDeep = (base: any, override: any, deepKeys: any[]) => {
 
 type DeepObservable = { [key: string]: Observable<any> | DeepObservable };
 
-const useRxUpdate = (observableProps: DeepObservable) => {
+const useAxUpdate = (observableProps: DeepObservable) => {
   const componentRef = useRef<any>();
   const formerObservableProps = useRef<any>({});
   const observableValues = useRef<any>({});
@@ -94,7 +94,7 @@ const useRxUpdate = (observableProps: DeepObservable) => {
   };
 };
 
-const createRxComponent = <
+export const createAxComponent = <
   Props extends Object,
   DeepKeys = { [key: string]: boolean } 
 >(
@@ -107,7 +107,7 @@ const createRxComponent = <
     Object.keys(deepKeys),
   );
 
-  const { componentRef, observableValues } = useRxUpdate(observableProps);
+  const { componentRef, observableValues } = useAxUpdate(observableProps);
 
   const mergedProps = mergeDeep(normalProps, observableValues, Object.keys(deepKeys));
 
@@ -115,5 +115,3 @@ const createRxComponent = <
     <Comp ref={componentRef} {...mergedProps} />
   )
 };
-
-export { createRxComponent };
