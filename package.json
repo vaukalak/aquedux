@@ -1,6 +1,6 @@
 {
   "name": "aquedux",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react components directly manipulated by streams",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
