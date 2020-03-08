@@ -1,5 +1,11 @@
 import React, { useRef, useEffect } from 'react';
-import { Observable, isObservable } from 'rxjs';
+import { isObservable } from './isObservable';
+
+export interface Observable<T> {
+  subscribe(cb: (value: T) => any): {
+    unsubscribe: () => void;
+  }
+}
 
 type ValueOrObservable<V> = V | Observable<V>;
 
