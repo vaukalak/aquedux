@@ -25,7 +25,7 @@ export const Aquedux = {
     { style: true }
   ),
   img: createAxComponent(
-    defineElement<React.HTMLAttributes<HTMLIFrameElement>>('img'),
+    defineElement<React.HTMLAttributes<HTMLImageElement>>('img'),
     { style: true }
   ),
   table: createAxComponent(
