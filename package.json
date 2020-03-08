@@ -1,0 +1,43 @@
+{
+  "name": "react-rx",
+  "version": "1.0.0",
+  "description": "react components directly manipulated by streams",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "vaukalak",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\"",
+    "build:dts": "tsc --emitDeclarationOnly",
+    "build": "npm run build:js && npm run build:dts",
+    "prepublish": "npm run build",
+    "postpublish": "git push origin master --follow-tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vaukalak/react-rx"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "dependencies": {
+    "react": "^16.13.0",
+    "rxjs": "^6.5.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/react": "^16.9.23",
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "@typescript-eslint/parser": "^2.22.0",
+    "babel-eslint": "^10.1.0",
+    "jest": "^25.1.0",
+    "jest-cli": "^25.1.0",
+    "typescript": "^3.8.3"
+  }
+}
