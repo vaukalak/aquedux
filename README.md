@@ -36,7 +36,7 @@ export const App = () => {
     // write new value to the subject
     $color.next(red << 16 | green << 8 | blue);
     $coordinates.next({ x: e.pageX, y: e.pageY });
-  }, [$color]);
+  }, [$color, $coordinates]);
 
   // use Aquedux component, to accept observable value.
   return <Aquedux.div
