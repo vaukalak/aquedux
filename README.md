@@ -1,4 +1,4 @@
-# aquedux
+# Aquedux
 react components directly manipulated by streams
 
 ## Why?
