@@ -27,25 +27,43 @@ const toRgb = (v: number) => {
 };
 
 export const App = () => {
-  const subj = useMemo(() => new BehaviorSubject(0x000000), []);
+  const $color = useMemo(() => new BehaviorSubject(0xFFFFFF), []);
+  const $coordinates = useMemo(() => new BehaviorSubject({ x: 0, y: 0 }), []);
   const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const red = Math.floor(e.pageX / window.innerWidth * 255);
     const green = Math.floor(e.pageY / window.innerHeight * 255);
     const blue = Math.floor((window.innerWidth - e.pageX) / window.innerWidth * 255);
     // write new value to the subject
-    subj.next(red << 16 | green << 8 | blue);
-  }, [subj]);
+    $color.next(red << 16 | green << 8 | blue);
+    $coordinates.next({ x: e.pageX, y: e.pageY });
+  }, [$color]);
 
   // use Aquedux component, to accept observable value.
   return <Aquedux.div
     onMouseMove={onMouseMove}
     style={{
       width: "100%",
-      height: "100vh",
+      height: "100%",
+      display: "flex",
+      justifyContent: "space-around",
+      alignItems: "center",
       // assign observable to any style, and that's it :)
-      backgroundColor: subj.pipe(map(toRgb))
+      backgroundColor: $color.pipe(map(toRgb))
     }}
-  />
+  >
+    <Aquedux.span
+      style={{
+        color: "black",
+        fontSize: 200,
+        fontFamily: "Arial",
+        fontWeight: "bold",
+        userSelect: "none",
+      }}
+    >
+      {/* You can also set directly children to html components */}
+      {$coordinates.pipe(map(({ x, y }) => `${x}:${y}`))}
+    </Aquedux.span>
+  </Aquedux.div>
 };
 ```
 
