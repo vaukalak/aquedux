@@ -15,6 +15,8 @@ npm i -S aquedux
 
 ## Usage
 
+Try example on [this code sandbox]((https://codesandbox.io/s/aquedux-mouse-move-example-799s5))
+
 ```
 import React, { useMemo, useCallback } from 'react';
 import { Aquedux } from "aquedux";
