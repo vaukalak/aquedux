@@ -76,7 +76,7 @@ const useAxUpdate = (observableProps: DeepObservable, keyMap: { [key: string]: s
               componentRef.current![prefix][key] = value;
             } else {
               observableValues.current[key] = value;
-              componentRef.current![keyMap[key]] = value;
+              componentRef.current![keyMap[key] || key] = value;
             }
           });
         } else {
